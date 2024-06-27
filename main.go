@@ -27,10 +27,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	defer term.Restore(int(os.Stdin.Fd()), oldState)
 
 	args := os.Args[1:] // exclude executable name in os.Args[0]
 	err = cl.Process(args)
+	term.Restore(int(os.Stdin.Fd()), oldState)
 	if err != nil {
 		cl.Help(err, "go-redisemu-server", args)
 	}
