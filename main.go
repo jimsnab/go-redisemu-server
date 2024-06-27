@@ -47,6 +47,9 @@ func mainHandler(args cmdline.Values) error {
 	}
 
 	port := args["port"].(int)
+	if port == 0 {
+		port = 6379
+	}
 	iface := args["interface"].(string)
 	basePath := args["file"].(string)
 
